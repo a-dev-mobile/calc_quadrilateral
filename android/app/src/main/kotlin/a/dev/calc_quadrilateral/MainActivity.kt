@@ -1,4 +1,4 @@
-package a.dev.calc_quadrilateral.calc_quadrilateral
+package a.dev.calc_quadrilateral
 
 import io.flutter.embedding.android.FlutterActivity
 

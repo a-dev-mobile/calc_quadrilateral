@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="a.dev.calc_quadrilateral.calc_quadrilateral">
+    package="a.dev.calc_quadrilateral">
    <application
         android:label="calc_quadrilateral"
         android:icon="@mipmap/launcher_icon">
@@ -28,5 +28,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data
+           android:name="com.google.android.gms.ads.APPLICATION_ID"
+           android:value="ca-app-pub-6155876762943258~1504169348"/>
     </application>
 </manifest>

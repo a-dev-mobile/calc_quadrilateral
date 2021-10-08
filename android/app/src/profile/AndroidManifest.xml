@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="a.dev.calc_quadrilateral.calc_quadrilateral">
+    package="a.dev.calc_quadrilateral">
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->

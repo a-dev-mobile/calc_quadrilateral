@@ -11,12 +11,12 @@ class TranslateHelper {
   }
 
   static String get right_quadrilateral => 'right_quadrilateral'.tr;
-  static String get scalene_quadrilateral => 'scalene_quadrilateral'.tr;
+  static String get trapezoid_quadrilateral => 'trapezoid_quadrilateral'.tr;
   static String get isosceles_quadrilateral => 'isosceles_quadrilateral'.tr;
   static String get equilateral_quadrilateral => 'equilateral_quadrilateral'.tr;
 
   static String get right_info => 'right_info'.tr;
-  static String get scalene_info => 'scalene_info'.tr;
+  static String get trapezoid_info => 'trapezoid_info'.tr;
   static String get isosceles_info => 'isosceles_info'.tr;
   static String get equilateral_info => 'equilateral_info'.tr;
 

@@ -1,17 +1,19 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'dart:math';
 
 import 'package:calc_quadrilateral/app/config/theme/app_style.dart';
-import 'package:calc_quadrilateral/app/features/calculate/controllers/scalene_c.dart';
+import 'package:calc_quadrilateral/app/features/calculate/controllers/trapezoid_c.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-late var c = ScalenequadrilateralController.to;
+late var c = TrapezoidController.to;
 
-class HheightWidget extends StatelessWidget {
-  const HheightWidget(
+class BsideWidget extends StatelessWidget {
+  const BsideWidget(
       {Key? key,
       required this.posX,
       required this.posY,
@@ -27,9 +29,9 @@ class HheightWidget extends StatelessWidget {
   // ====change====
   void onTap() {
     c.isaSide.value = false;
-    c.isbSide.value = false;
+    c.isbSide.value = true;
     c.iscSide.value = false;
-    c.ishHeight.value = true;
+    c.ishHeight.value = false;
     c.isaAngle.value = false;
     c.isbAngle.value = false;
     c.isyAngle.value = false;
@@ -43,7 +45,7 @@ class HheightWidget extends StatelessWidget {
 
     bool isActiveInput;
     bool isActiveParam;
-    Scalenequadrilateral elementFigure;
+    Trapezoid elementFigure;
     String activeValue;
     return Transform.translate(
         offset:
@@ -52,11 +54,12 @@ class HheightWidget extends StatelessWidget {
             angle: angle * pi / 180,
             child: Obx(() {
               // ====change====
-              activeValue = c.hHeight.value;
-              isActiveInput = c.ishHeight.value;
-              elementFigure = Scalenequadrilateral.hHeight;
+              activeValue = c.bSide.value;
+              isActiveInput = c.isbSide.value;
+              elementFigure = Trapezoid.bSide;
               //===============
-              isActiveParam = c.activeParamMap.containsValue(elementFigure);
+              isActiveParam =
+                  c.activeParamMap.value.containsValue(elementFigure);
               if (isActiveInput) {
                 styleText = AppStyleTextImage.activeInput(context);
               } else if (isActiveParam) {

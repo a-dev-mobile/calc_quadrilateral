@@ -1,14 +1,14 @@
 import 'package:calc_quadrilateral/app/config/theme/app_style.dart';
-import 'package:calc_quadrilateral/app/features/calculate/controllers/scalene_c.dart';
+import 'package:calc_quadrilateral/app/features/calculate/controllers/trapezoid_c.dart';
 import 'package:calc_quadrilateral/app/shared_components/numpad/key.dart';
 import 'package:calc_quadrilateral/app/shared_components/numpad/key_symbol.dart';
 
 import 'package:flutter/material.dart';
 
-late var c = ScalenequadrilateralController.to;
+late var c = TrapezoidController.to;
 
-class NumPadScaleneWidget extends StatelessWidget {
-  const NumPadScaleneWidget({Key? key}) : super(key: key);
+class NumPadTrapezoidWidget extends StatelessWidget {
+  const NumPadTrapezoidWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

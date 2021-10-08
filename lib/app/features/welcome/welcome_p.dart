@@ -133,12 +133,12 @@ class ImageAppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      ConstAssetsImageRaster.rightquadrilateralInfo,
+      ConstAssetsImageRaster.trapezoidInfo,
       fit: BoxFit.contain,
       color: AppColors.contentRevers(context),
 
       // Image.asset(
-      //   ConstAssets.scalenequadrilateralInfo,
+      //   ConstAssets.trapezoidInfo,
       //   fit: BoxFit.contain,
       //   color: AppColors.contentRevers(context),
       // ),

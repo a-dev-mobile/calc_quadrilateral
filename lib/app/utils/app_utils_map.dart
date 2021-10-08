@@ -1,7 +1,7 @@
 class AppUtilsMap {
   /* 
     var updateMap = updateValues(activeParamMap, oldValue, newValue)
-      .cast<int, Scalenequadrilateral>();
+      .cast<int, Trapezoid>();
 
   var updateMap2 = updateValues(activeParamMap2, oldValue2, newValue2)
       .cast<int, Rightquadrilateral>();

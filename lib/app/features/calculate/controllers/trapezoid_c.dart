@@ -16,7 +16,7 @@ import 'package:calc_quadrilateral/app/utils/validation_utils.dart';
 
 import 'package:get/get.dart';
 
-enum Scalenequadrilateral {
+enum Trapezoid {
   aSide,
   bSide,
   cSide,
@@ -27,15 +27,14 @@ enum Scalenequadrilateral {
   empty,
 }
 
-class ScalenequadrilateralController extends GetxController {
-  static ScalenequadrilateralController get to =>
-      Get.find<ScalenequadrilateralController>();
+class TrapezoidController extends GetxController {
+  static TrapezoidController get to => Get.find<TrapezoidController>();
 
   static const startAngleValue = '0°';
   static const startLengthValue = '0';
   static const ifErrorValue = '0';
 
-  var activeParamMap = <int, Scalenequadrilateral>{}.obs;
+  var activeParamMap = <int, Trapezoid>{}.obs;
 
   var aSide = startLengthValue.obs;
   var bSide = startLengthValue.obs;
@@ -111,7 +110,7 @@ class ScalenequadrilateralController extends GetxController {
   var isActiveImageInfo = false.obs;
 
   //что  бы не сбрасывать в методе
-  var paramLastLenght = Scalenequadrilateral.empty;
+  var paramLastLenght = Trapezoid.empty;
 
   late int precisionResult;
 
@@ -336,10 +335,10 @@ class ScalenequadrilateralController extends GetxController {
   }
 
   void resetActiveParams() {
-    activeParamMap.value = <int, Scalenequadrilateral>{
-      1: Scalenequadrilateral.empty,
-      2: Scalenequadrilateral.empty,
-      3: Scalenequadrilateral.empty,
+    activeParamMap.value = <int, Trapezoid>{
+      1: Trapezoid.empty,
+      2: Trapezoid.empty,
+      3: Trapezoid.empty,
     };
   }
 
@@ -364,31 +363,31 @@ class ScalenequadrilateralController extends GetxController {
 
     // if (isValueChange()) {
     try {
-      if (activeParamMap.containsValue(Scalenequadrilateral.aSide)) {
+      if (activeParamMap.containsValue(Trapezoid.aSide)) {
         aSideD = double.parse(aSide.value);
       }
-      if (activeParamMap.containsValue(Scalenequadrilateral.bSide)) {
+      if (activeParamMap.containsValue(Trapezoid.bSide)) {
         bSideD = double.parse(bSide.value);
       }
-      if (activeParamMap.containsValue(Scalenequadrilateral.cSide)) {
+      if (activeParamMap.containsValue(Trapezoid.cSide)) {
         cSideD = double.parse(cSide.value);
       }
 
-      if (activeParamMap.containsValue(Scalenequadrilateral.hHeight)) {
+      if (activeParamMap.containsValue(Trapezoid.hHeight)) {
         hHeightD = double.parse(hHeight.value);
       }
 
-      if (activeParamMap.containsValue(Scalenequadrilateral.aAngle)) {
+      if (activeParamMap.containsValue(Trapezoid.aAngle)) {
         aAngleD =
             double.parse(AppUtilsString.removeLastCharacter(aAngle.value));
       }
 
-      if (activeParamMap.containsValue(Scalenequadrilateral.bAngle)) {
+      if (activeParamMap.containsValue(Trapezoid.bAngle)) {
         bAngleD =
             double.parse(AppUtilsString.removeLastCharacter(bAngle.value));
       }
 
-      if (activeParamMap.containsValue(Scalenequadrilateral.yAngle)) {
+      if (activeParamMap.containsValue(Trapezoid.yAngle)) {
         yAngleD =
             double.parse(AppUtilsString.removeLastCharacter(yAngle.value));
       }
@@ -683,15 +682,15 @@ class ScalenequadrilateralController extends GetxController {
     if (isOnlyTwoParamEmpty()) return;
     log.i('start calculate');
     printElements();
-    Scalenequadrilateral param1;
-    Scalenequadrilateral param2;
-    Scalenequadrilateral param3;
+    Trapezoid param1;
+    Trapezoid param2;
+    Trapezoid param3;
 
     // ==========================================
     // aAngle bAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.aAngle;
-    param2 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.aAngle;
+    param2 = Trapezoid.bAngle;
     if (isAvailableTwoParams(param1, param2)) {
       calcYangKnowAangBang();
     }
@@ -699,8 +698,8 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     // yAngle bAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.yAngle;
-    param2 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.yAngle;
+    param2 = Trapezoid.bAngle;
     if (isAvailableTwoParams(param1, param2)) {
       calcAangKnowYangBang();
     }
@@ -708,8 +707,8 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     // yAngle bAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.yAngle;
-    param2 = Scalenequadrilateral.aAngle;
+    param1 = Trapezoid.yAngle;
+    param2 = Trapezoid.aAngle;
     if (isAvailableTwoParams(param1, param2)) {
       calcBangKnowYangAang();
     }
@@ -717,9 +716,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //  //aSide bSide cSide == ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.bSide;
-    param3 = Scalenequadrilateral.cSide;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.cSide;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowAsideBSideCside();
       calcAangKnowAsideBSideCside();
@@ -735,9 +734,9 @@ class ScalenequadrilateralController extends GetxController {
 // ==========================================
     //  //aSide bSide hHeight = ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.bSide;
-    param3 = Scalenequadrilateral.hHeight;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.hHeight;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowHheiBside();
       calcCsideKnowAsideBSideBang();
@@ -754,9 +753,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     // //aSide bSide aAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.bSide;
-    param3 = Scalenequadrilateral.aAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.aAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcYangKnowAsideBsideAang();
       calcBangKnowYangAang();
@@ -772,9 +771,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //  // //aSide bSide bAngle==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.bSide;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcCsideKnowAsideBSideBang();
       calcAangKnowAsideBSideCside();
@@ -790,9 +789,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //aSide bSide yAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.bSide;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAangKnowAsideBsideYang();
 
@@ -810,9 +809,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //  // ////aSide cSide aAngle = ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.aAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.aAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBsideKnowAsideCSideAang();
       calcBangKnowAsideBSideCside();
@@ -828,9 +827,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     // //aSide cSide bAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcYangKnowAsideCsideBang();
       calcAangKnowYangBang();
@@ -846,9 +845,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //aSide cSide yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowAsideCsideYang();
       calcAangKnowYangBang();
@@ -864,9 +863,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //  //aSide aAngle bAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcYangKnowAangBang();
       calcCsideKnowAsideYangBang();
@@ -883,9 +882,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //  //aSide aAngle yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowYangAang();
       calcCsideKnowAsideYangBang();
@@ -902,9 +901,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //  //aSide bAngle yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.bAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAangKnowYangBang();
 
@@ -922,9 +921,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide cSide aAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.aAngle;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.aAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowCsideBsideAang();
       calcBangKnowCsideBsideAang();
@@ -943,9 +942,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide cSide bAngle = ok
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAangKnowCsideBsideBang();
       calcYangKnowAangBang();
@@ -961,9 +960,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //  // bSide cSide yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAsideKnowBsideCSideYang();
       calcBangKnowAsideBSideCside();
@@ -979,9 +978,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide aAngle bAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcYangKnowAangBang();
       calcCsideKnowBsideAangBang();
@@ -998,9 +997,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide aAngle yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowYangAang();
       calcCsideKnowBsideAangBang();
@@ -1017,9 +1016,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide bAngle yAngle = ok
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.bAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.bAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAangKnowYangBang();
       calcCsideKnowBsideAangBang();
@@ -1036,9 +1035,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //cSide aAngle bAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.cSide;
-    param2 = Scalenequadrilateral.bAngle;
-    param3 = Scalenequadrilateral.aAngle;
+    param1 = Trapezoid.cSide;
+    param2 = Trapezoid.bAngle;
+    param3 = Trapezoid.aAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcYangKnowAangBang();
       calcAsideKnowCsideBangYang();
@@ -1055,9 +1054,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //cSide aAngle yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.cSide;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.cSide;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowYangAang();
       calcAsideKnowCsideBangYang();
@@ -1073,9 +1072,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //cSide bAngle yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.cSide;
-    param2 = Scalenequadrilateral.bAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.cSide;
+    param2 = Trapezoid.bAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAangKnowYangBang();
       calcAsideKnowCsideBangYang();
@@ -1091,9 +1090,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //hHeight aAngle bAngle = ok
     // ==========================================
-    param1 = Scalenequadrilateral.hHeight;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.hHeight;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAangKnowYangBang();
       calcCsideKnowHheiAang();
@@ -1110,9 +1109,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //hHeight aAngle yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.hHeight;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.hHeight;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowYangAang();
       calcCsideKnowHheiAang();
@@ -1129,9 +1128,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //hHeight bAngle yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.hHeight;
-    param2 = Scalenequadrilateral.bAngle;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.hHeight;
+    param2 = Trapezoid.bAngle;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAangKnowYangBang();
       calcCsideKnowHheiAang();
@@ -1148,9 +1147,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide hHeight aAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.hHeight;
-    param2 = Scalenequadrilateral.bSide;
-    param3 = Scalenequadrilateral.aAngle;
+    param1 = Trapezoid.hHeight;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.aAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcCsideKnowHheiAang();
       calcBangKnowCsideBsideAang();
@@ -1166,9 +1165,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide hHeight yAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.hHeight;
-    param2 = Scalenequadrilateral.bSide;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.hHeight;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowHheiBside();
       calcAangKnowYangBang();
@@ -1185,9 +1184,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //aSide hHeight aAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.hHeight;
-    param2 = Scalenequadrilateral.aSide;
-    param3 = Scalenequadrilateral.aAngle;
+    param1 = Trapezoid.hHeight;
+    param2 = Trapezoid.aSide;
+    param3 = Trapezoid.aAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcCsideKnowHheiAang();
       calcBsideKnowAsideCSideAang();
@@ -1204,9 +1203,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //aSide cSide hHeight ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.hHeight;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.hHeight;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAanglKnowCsideHhei();
       calcBsideKnowAsideCSideAang();
@@ -1224,9 +1223,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
 //cSide hHeight bAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.bAngle;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.hHeight;
+    param1 = Trapezoid.bAngle;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.hHeight;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAanglKnowCsideHhei();
       calcYangKnowAangBang();
@@ -1242,9 +1241,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
 //cSide hHeight yAngle == ok
     // ==========================================
-    param1 = Scalenequadrilateral.cSide;
-    param2 = Scalenequadrilateral.hHeight;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.cSide;
+    param2 = Trapezoid.hHeight;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcAanglKnowCsideHhei();
       calcBangKnowYangAang();
@@ -1261,9 +1260,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================s
     //aSide hHeight bAngle ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.hHeight;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.hHeight;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBSideKnowBangHhei();
       calcCsideKnowAsideBSideBang();
@@ -1280,9 +1279,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide cSide hHeight ==ok
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.cSide;
-    param3 = Scalenequadrilateral.hHeight;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.cSide;
+    param3 = Trapezoid.hHeight;
     if (isAvailableThreeParams(param1, param2, param3)) {
       calcBangKnowHheiBside();
       calcAangKnowCsideBsideBang();
@@ -1299,9 +1298,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //aSide hHeight yAngle
     // ==========================================
-    param1 = Scalenequadrilateral.aSide;
-    param2 = Scalenequadrilateral.hHeight;
-    param3 = Scalenequadrilateral.yAngle;
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.hHeight;
+    param3 = Trapezoid.yAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       isNotFormula = true;
     }
@@ -1309,9 +1308,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
     //bSide hHeight bAngle
     // ==========================================
-    param1 = Scalenequadrilateral.bSide;
-    param2 = Scalenequadrilateral.hHeight;
-    param3 = Scalenequadrilateral.bAngle;
+    param1 = Trapezoid.bSide;
+    param2 = Trapezoid.hHeight;
+    param3 = Trapezoid.bAngle;
     if (isAvailableThreeParams(param1, param2, param3)) {
       isNotFormula = true;
     }
@@ -1319,9 +1318,9 @@ class ScalenequadrilateralController extends GetxController {
     // ==========================================
 //cSide hHeight aAngle
     // ==========================================
-    param1 = Scalenequadrilateral.cSide;
-    param2 = Scalenequadrilateral.aAngle;
-    param3 = Scalenequadrilateral.hHeight;
+    param1 = Trapezoid.cSide;
+    param2 = Trapezoid.aAngle;
+    param3 = Trapezoid.hHeight;
     if (isAvailableThreeParams(param1, param2, param3)) {
       isNotFormula = true;
 
@@ -1379,15 +1378,15 @@ class ScalenequadrilateralController extends GetxController {
   void moveEmptyValueToStartInParameters() {
     activeParamMap.addAll(AppUtilsMap.moveValue(
             oldMap: activeParamMap,
-            moveValue: Scalenequadrilateral.empty,
+            moveValue: Trapezoid.empty,
             isPositionStart: true)
-        .cast<int, Scalenequadrilateral>());
+        .cast<int, Trapezoid>());
   }
 
   void moveValueToEndInParameters(var value) {
     activeParamMap.addAll(AppUtilsMap.moveValue(
             oldMap: activeParamMap, moveValue: value, isPositionStart: false)
-        .cast<int, Scalenequadrilateral>());
+        .cast<int, Trapezoid>());
   }
 
 // если значение при удалении равно 0 то обнуляем активный параметр
@@ -1397,15 +1396,15 @@ class ScalenequadrilateralController extends GetxController {
 
     activeInput = isaSide.value;
     valueActiveInput = aSide.value;
-    Scalenequadrilateral oldValue;
-    var newValue = Scalenequadrilateral.empty;
+    Trapezoid oldValue;
+    var newValue = Trapezoid.empty;
 
     if (activeInput && valueActiveInput == startLengthValue) {
-      oldValue = Scalenequadrilateral.aSide;
+      oldValue = Trapezoid.aSide;
 
       activeParamMap.value = AppUtilsMap.updateValues(
               oldMap: activeParamMap, oldValue: oldValue, newValue: newValue)
-          .cast<int, Scalenequadrilateral>();
+          .cast<int, Trapezoid>();
 
       return true;
     }
@@ -1413,11 +1412,11 @@ class ScalenequadrilateralController extends GetxController {
     activeInput = isbSide.value;
     valueActiveInput = bSide.value;
     if (activeInput && valueActiveInput == startLengthValue) {
-      oldValue = Scalenequadrilateral.bSide;
+      oldValue = Trapezoid.bSide;
 
       activeParamMap.value = AppUtilsMap.updateValues(
               oldMap: activeParamMap, oldValue: oldValue, newValue: newValue)
-          .cast<int, Scalenequadrilateral>();
+          .cast<int, Trapezoid>();
 
       return true;
     }
@@ -1425,11 +1424,11 @@ class ScalenequadrilateralController extends GetxController {
     activeInput = iscSide.value;
     valueActiveInput = cSide.value;
     if (activeInput && valueActiveInput == startLengthValue) {
-      oldValue = Scalenequadrilateral.cSide;
+      oldValue = Trapezoid.cSide;
 
       activeParamMap.value = AppUtilsMap.updateValues(
               oldMap: activeParamMap, oldValue: oldValue, newValue: newValue)
-          .cast<int, Scalenequadrilateral>();
+          .cast<int, Trapezoid>();
 
       return true;
     }
@@ -1437,11 +1436,11 @@ class ScalenequadrilateralController extends GetxController {
     activeInput = ishHeight.value;
     valueActiveInput = hHeight.value;
     if (activeInput && valueActiveInput == startLengthValue) {
-      oldValue = Scalenequadrilateral.hHeight;
+      oldValue = Trapezoid.hHeight;
 
       activeParamMap.value = AppUtilsMap.updateValues(
               oldMap: activeParamMap, oldValue: oldValue, newValue: newValue)
-          .cast<int, Scalenequadrilateral>();
+          .cast<int, Trapezoid>();
 
       return true;
     }
@@ -1449,11 +1448,11 @@ class ScalenequadrilateralController extends GetxController {
     activeInput = isaAngle.value;
     valueActiveInput = aAngle.value;
     if (activeInput && valueActiveInput == startAngleValue) {
-      oldValue = Scalenequadrilateral.aAngle;
+      oldValue = Trapezoid.aAngle;
 
       activeParamMap.value = AppUtilsMap.updateValues(
               oldMap: activeParamMap, oldValue: oldValue, newValue: newValue)
-          .cast<int, Scalenequadrilateral>();
+          .cast<int, Trapezoid>();
 
       return true;
     }
@@ -1461,11 +1460,11 @@ class ScalenequadrilateralController extends GetxController {
     activeInput = isbAngle.value;
     valueActiveInput = bAngle.value;
     if (activeInput && valueActiveInput == startAngleValue) {
-      oldValue = Scalenequadrilateral.bAngle;
+      oldValue = Trapezoid.bAngle;
 
       activeParamMap.value = AppUtilsMap.updateValues(
               oldMap: activeParamMap, oldValue: oldValue, newValue: newValue)
-          .cast<int, Scalenequadrilateral>();
+          .cast<int, Trapezoid>();
 
       return true;
     }
@@ -1473,11 +1472,11 @@ class ScalenequadrilateralController extends GetxController {
     activeInput = isyAngle.value;
     valueActiveInput = yAngle.value;
     if (activeInput && valueActiveInput == startAngleValue) {
-      oldValue = Scalenequadrilateral.yAngle;
+      oldValue = Trapezoid.yAngle;
 
       activeParamMap.value = AppUtilsMap.updateValues(
               oldMap: activeParamMap, oldValue: oldValue, newValue: newValue)
-          .cast<int, Scalenequadrilateral>();
+          .cast<int, Trapezoid>();
 
       return true;
     }
@@ -1488,37 +1487,37 @@ class ScalenequadrilateralController extends GetxController {
     log.v(
         '1 ${activeParamMap[1]} 2 ${activeParamMap[2]} 3 ${activeParamMap[3]} start active param');
 
-    Scalenequadrilateral paramActive = Scalenequadrilateral.empty;
+    Trapezoid paramActive = Trapezoid.empty;
 
     if (isInputStartValue()) return;
 
     if (isaSide.value) {
-      paramActive = Scalenequadrilateral.aSide;
-      paramLastLenght = Scalenequadrilateral.aSide;
+      paramActive = Trapezoid.aSide;
+      paramLastLenght = Trapezoid.aSide;
     } else if (isbSide.value) {
-      paramActive = Scalenequadrilateral.bSide;
-      paramLastLenght = Scalenequadrilateral.bSide;
+      paramActive = Trapezoid.bSide;
+      paramLastLenght = Trapezoid.bSide;
     } else if (iscSide.value) {
-      paramActive = Scalenequadrilateral.cSide;
-      paramLastLenght = Scalenequadrilateral.cSide;
+      paramActive = Trapezoid.cSide;
+      paramLastLenght = Trapezoid.cSide;
     } else if (ishHeight.value) {
-      paramActive = Scalenequadrilateral.hHeight;
-      paramLastLenght = Scalenequadrilateral.hHeight;
+      paramActive = Trapezoid.hHeight;
+      paramLastLenght = Trapezoid.hHeight;
     } else if (isaAngle.value) {
-      paramActive = Scalenequadrilateral.aAngle;
+      paramActive = Trapezoid.aAngle;
     } else if (isbAngle.value) {
-      paramActive = Scalenequadrilateral.bAngle;
+      paramActive = Trapezoid.bAngle;
     } else if (isyAngle.value) {
-      paramActive = Scalenequadrilateral.yAngle;
+      paramActive = Trapezoid.yAngle;
     }
 
 //если один параметр пустой заменяем его
     // if (isOnlyOneParamEmpty()) {
     //   activeParamMap.value = AppUtilsMap.updateValues(
     //           oldMap: activeParamMap,
-    //           oldValue: Scalenequadrilateral.empty,
+    //           oldValue: Trapezoid.empty,
     //           newValue: paramActive)
-    //       .cast<int, Scalenequadrilateral>();
+    //       .cast<int, Trapezoid>();
 
     //   return;
     // }
@@ -1533,7 +1532,7 @@ class ScalenequadrilateralController extends GetxController {
 //если последний параметр похож на активный
     if (activeParamMap[3] == paramActive) return;
 
-    if (activeParamMap[3] != Scalenequadrilateral.empty) {
+    if (activeParamMap[3] != Trapezoid.empty) {
       activeParamMap[1] = activeParamMap[2]!;
       activeParamMap[2] = activeParamMap[3]!;
     }
@@ -1542,7 +1541,7 @@ class ScalenequadrilateralController extends GetxController {
   }
 
   bool isAvailableOneParam(
-    Scalenequadrilateral param1,
+    Trapezoid param1,
   ) {
     if (activeParamMap.containsValue(param1)) {
       return true;
@@ -1551,8 +1550,8 @@ class ScalenequadrilateralController extends GetxController {
   }
 
   bool isAvailableTwoParams(
-    Scalenequadrilateral param1,
-    Scalenequadrilateral param2,
+    Trapezoid param1,
+    Trapezoid param2,
   ) {
     if (activeParamMap.containsValue(param1) &&
         activeParamMap.containsValue(param2)) {
@@ -1562,9 +1561,9 @@ class ScalenequadrilateralController extends GetxController {
   }
 
   bool isAvailableThreeParams(
-    Scalenequadrilateral param1,
-    Scalenequadrilateral param2,
-    Scalenequadrilateral param3,
+    Trapezoid param1,
+    Trapezoid param2,
+    Trapezoid param3,
   ) {
     if (activeParamMap.containsValue(param1) &&
         activeParamMap.containsValue(param2) &&
@@ -1607,9 +1606,9 @@ class ScalenequadrilateralController extends GetxController {
 
     //если активны данные параметры и выбор стороны
     if (isAvailableThreeParams(
-      Scalenequadrilateral.aSide,
-      Scalenequadrilateral.bSide,
-      Scalenequadrilateral.cSide,
+      Trapezoid.aSide,
+      Trapezoid.bSide,
+      Trapezoid.cSide,
     )) {
       if (iscSide.value) {
         result = aSideD + bSideD;
@@ -1677,8 +1676,8 @@ class ScalenequadrilateralController extends GetxController {
     }
     // если доступны данные параметры неважно с каким углом
     if (isAvailableTwoParams(
-      Scalenequadrilateral.bSide,
-      Scalenequadrilateral.hHeight,
+      Trapezoid.bSide,
+      Trapezoid.hHeight,
     )) {
       if (isbSide.value) {
         result = hHeightD;
@@ -1699,8 +1698,8 @@ class ScalenequadrilateralController extends GetxController {
     }
 
     if (isAvailableTwoParams(
-      Scalenequadrilateral.cSide,
-      Scalenequadrilateral.hHeight,
+      Trapezoid.cSide,
+      Trapezoid.hHeight,
     )) {
       if (iscSide.value) {
         result = hHeightD;
@@ -1764,9 +1763,9 @@ class ScalenequadrilateralController extends GetxController {
   }
 
   bool isActiveParamAngles() {
-    bool condition1 = activeParamMap.containsValue(Scalenequadrilateral.aAngle);
-    bool condition2 = activeParamMap.containsValue(Scalenequadrilateral.bAngle);
-    bool condition3 = activeParamMap.containsValue(Scalenequadrilateral.yAngle);
+    bool condition1 = activeParamMap.containsValue(Trapezoid.aAngle);
+    bool condition2 = activeParamMap.containsValue(Trapezoid.bAngle);
+    bool condition3 = activeParamMap.containsValue(Trapezoid.yAngle);
 
     if (condition1 && condition2 && condition3) {
       logger.e('isActiveThreeParamAngles');
@@ -1777,55 +1776,55 @@ class ScalenequadrilateralController extends GetxController {
   }
 
   bool isLeatOneParamEmpty() {
-    if (activeParamMap.containsValue(Scalenequadrilateral.empty)) {
+    if (activeParamMap.containsValue(Trapezoid.empty)) {
       return true;
     }
     return false;
   }
 
   bool isOnlyOneParamEmpty() {
-    if (activeParamMap[1] == Scalenequadrilateral.empty &&
-            activeParamMap[2] != Scalenequadrilateral.empty &&
-            activeParamMap[3] != Scalenequadrilateral.empty ||
-        activeParamMap[1] != Scalenequadrilateral.empty &&
-            activeParamMap[2] == Scalenequadrilateral.empty &&
-            activeParamMap[3] != Scalenequadrilateral.empty ||
-        activeParamMap[1] != Scalenequadrilateral.empty &&
-            activeParamMap[2] != Scalenequadrilateral.empty &&
-            activeParamMap[3] == Scalenequadrilateral.empty) {
+    if (activeParamMap[1] == Trapezoid.empty &&
+            activeParamMap[2] != Trapezoid.empty &&
+            activeParamMap[3] != Trapezoid.empty ||
+        activeParamMap[1] != Trapezoid.empty &&
+            activeParamMap[2] == Trapezoid.empty &&
+            activeParamMap[3] != Trapezoid.empty ||
+        activeParamMap[1] != Trapezoid.empty &&
+            activeParamMap[2] != Trapezoid.empty &&
+            activeParamMap[3] == Trapezoid.empty) {
       return true;
     }
     return false;
   }
 
   bool isOnlyTwoParamEmpty() {
-    if (activeParamMap[1] == Scalenequadrilateral.empty &&
-            activeParamMap[2] == Scalenequadrilateral.empty &&
-            activeParamMap[3] != Scalenequadrilateral.empty ||
-        activeParamMap[1] == Scalenequadrilateral.empty &&
-            activeParamMap[2] != Scalenequadrilateral.empty &&
-            activeParamMap[3] == Scalenequadrilateral.empty ||
-        activeParamMap[1] != Scalenequadrilateral.empty &&
-            activeParamMap[2] == Scalenequadrilateral.empty &&
-            activeParamMap[3] == Scalenequadrilateral.empty) {
+    if (activeParamMap[1] == Trapezoid.empty &&
+            activeParamMap[2] == Trapezoid.empty &&
+            activeParamMap[3] != Trapezoid.empty ||
+        activeParamMap[1] == Trapezoid.empty &&
+            activeParamMap[2] != Trapezoid.empty &&
+            activeParamMap[3] == Trapezoid.empty ||
+        activeParamMap[1] != Trapezoid.empty &&
+            activeParamMap[2] == Trapezoid.empty &&
+            activeParamMap[3] == Trapezoid.empty) {
       return true;
     }
     return false;
   }
 
   bool isOnlyThreeParamEmpty() {
-    if (activeParamMap[1] == Scalenequadrilateral.empty &&
-        activeParamMap[2] == Scalenequadrilateral.empty &&
-        activeParamMap[3] == Scalenequadrilateral.empty) {
+    if (activeParamMap[1] == Trapezoid.empty &&
+        activeParamMap[2] == Trapezoid.empty &&
+        activeParamMap[3] == Trapezoid.empty) {
       return true;
     }
     return false;
   }
 
   bool isActiveTwoParamAngles() {
-    bool condition1 = activeParamMap.containsValue(Scalenequadrilateral.aAngle);
-    bool condition2 = activeParamMap.containsValue(Scalenequadrilateral.bAngle);
-    bool condition3 = activeParamMap.containsValue(Scalenequadrilateral.yAngle);
+    bool condition1 = activeParamMap.containsValue(Trapezoid.aAngle);
+    bool condition2 = activeParamMap.containsValue(Trapezoid.bAngle);
+    bool condition3 = activeParamMap.containsValue(Trapezoid.yAngle);
 
     if (condition1 && condition2) {
       logger.e('isActiveTwoParamAngles');
@@ -1915,111 +1914,111 @@ class ScalenequadrilateralController extends GetxController {
   }
 
   void restartActiveParamIfZeroValue() {
-    if (activeParamMap[1] == Scalenequadrilateral.aSide &&
+    if (activeParamMap[1] == Trapezoid.aSide &&
         aSide.value == startLengthValue) {
-      activeParamMap[1] = Scalenequadrilateral.empty;
+      activeParamMap[1] = Trapezoid.empty;
     }
 
-    if (activeParamMap[2] == Scalenequadrilateral.aSide &&
+    if (activeParamMap[2] == Trapezoid.aSide &&
         aSide.value == startLengthValue) {
-      activeParamMap[2] = Scalenequadrilateral.empty;
+      activeParamMap[2] = Trapezoid.empty;
     }
-    if (activeParamMap[3] == Scalenequadrilateral.aSide &&
+    if (activeParamMap[3] == Trapezoid.aSide &&
         aSide.value == startLengthValue) {
-      activeParamMap[3] = Scalenequadrilateral.empty;
+      activeParamMap[3] = Trapezoid.empty;
     }
 
 //===============================================
-    if (activeParamMap[1] == Scalenequadrilateral.bSide &&
+    if (activeParamMap[1] == Trapezoid.bSide &&
         bSide.value == startLengthValue) {
-      activeParamMap[1] = Scalenequadrilateral.empty;
+      activeParamMap[1] = Trapezoid.empty;
     }
 
-    if (activeParamMap[2] == Scalenequadrilateral.bSide &&
+    if (activeParamMap[2] == Trapezoid.bSide &&
         bSide.value == startLengthValue) {
-      activeParamMap[2] = Scalenequadrilateral.empty;
+      activeParamMap[2] = Trapezoid.empty;
     }
-    if (activeParamMap[3] == Scalenequadrilateral.bSide &&
+    if (activeParamMap[3] == Trapezoid.bSide &&
         bSide.value == startLengthValue) {
-      activeParamMap[3] = Scalenequadrilateral.empty;
+      activeParamMap[3] = Trapezoid.empty;
     }
 //===============================================
-    if (activeParamMap[1] == Scalenequadrilateral.cSide &&
+    if (activeParamMap[1] == Trapezoid.cSide &&
         cSide.value == startLengthValue) {
-      activeParamMap[1] = Scalenequadrilateral.empty;
+      activeParamMap[1] = Trapezoid.empty;
     }
 
-    if (activeParamMap[2] == Scalenequadrilateral.cSide &&
+    if (activeParamMap[2] == Trapezoid.cSide &&
         cSide.value == startLengthValue) {
-      activeParamMap[2] = Scalenequadrilateral.empty;
+      activeParamMap[2] = Trapezoid.empty;
     }
-    if (activeParamMap[3] == Scalenequadrilateral.cSide &&
+    if (activeParamMap[3] == Trapezoid.cSide &&
         cSide.value == startLengthValue) {
-      activeParamMap[3] = Scalenequadrilateral.empty;
+      activeParamMap[3] = Trapezoid.empty;
     }
 
 //===============================================
-    if (activeParamMap[1] == Scalenequadrilateral.hHeight &&
+    if (activeParamMap[1] == Trapezoid.hHeight &&
         hHeight.value == startLengthValue) {
-      activeParamMap[1] = Scalenequadrilateral.empty;
+      activeParamMap[1] = Trapezoid.empty;
     }
 
-    if (activeParamMap[2] == Scalenequadrilateral.hHeight &&
+    if (activeParamMap[2] == Trapezoid.hHeight &&
         hHeight.value == startLengthValue) {
-      activeParamMap[2] = Scalenequadrilateral.empty;
+      activeParamMap[2] = Trapezoid.empty;
     }
-    if (activeParamMap[3] == Scalenequadrilateral.hHeight &&
+    if (activeParamMap[3] == Trapezoid.hHeight &&
         hHeight.value == startLengthValue) {
-      activeParamMap[3] = Scalenequadrilateral.empty;
+      activeParamMap[3] = Trapezoid.empty;
     }
 
 //===============================================
-    if (activeParamMap[1] == Scalenequadrilateral.aAngle &&
+    if (activeParamMap[1] == Trapezoid.aAngle &&
         aAngle.value == startAngleValue) {
-      activeParamMap[1] = Scalenequadrilateral.empty;
+      activeParamMap[1] = Trapezoid.empty;
     }
 
-    if (activeParamMap[2] == Scalenequadrilateral.aAngle &&
+    if (activeParamMap[2] == Trapezoid.aAngle &&
         aAngle.value == startAngleValue) {
-      activeParamMap[2] = Scalenequadrilateral.empty;
+      activeParamMap[2] = Trapezoid.empty;
     }
 
-    if (activeParamMap[3] == Scalenequadrilateral.aAngle &&
+    if (activeParamMap[3] == Trapezoid.aAngle &&
         aAngle.value == startAngleValue) {
-      activeParamMap[3] = Scalenequadrilateral.empty;
+      activeParamMap[3] = Trapezoid.empty;
     }
 //===============================================
 
-    if (activeParamMap[1] == Scalenequadrilateral.bAngle &&
+    if (activeParamMap[1] == Trapezoid.bAngle &&
         bAngle.value == startAngleValue) {
-      activeParamMap[1] = Scalenequadrilateral.empty;
+      activeParamMap[1] = Trapezoid.empty;
     }
 
-    if (activeParamMap[2] == Scalenequadrilateral.bAngle &&
+    if (activeParamMap[2] == Trapezoid.bAngle &&
         bAngle.value == startAngleValue) {
-      activeParamMap[2] = Scalenequadrilateral.empty;
+      activeParamMap[2] = Trapezoid.empty;
     }
 
-    if (activeParamMap[3] == Scalenequadrilateral.bAngle &&
+    if (activeParamMap[3] == Trapezoid.bAngle &&
         bAngle.value == startAngleValue) {
-      activeParamMap[3] = Scalenequadrilateral.empty;
+      activeParamMap[3] = Trapezoid.empty;
     }
 
 //===============================================
 
-    if (activeParamMap[1] == Scalenequadrilateral.yAngle &&
+    if (activeParamMap[1] == Trapezoid.yAngle &&
         yAngle.value == startAngleValue) {
-      activeParamMap[1] = Scalenequadrilateral.empty;
+      activeParamMap[1] = Trapezoid.empty;
     }
 
-    if (activeParamMap[2] == Scalenequadrilateral.yAngle &&
+    if (activeParamMap[2] == Trapezoid.yAngle &&
         yAngle.value == startAngleValue) {
-      activeParamMap[2] = Scalenequadrilateral.empty;
+      activeParamMap[2] = Trapezoid.empty;
     }
 
-    if (activeParamMap[3] == Scalenequadrilateral.yAngle &&
+    if (activeParamMap[3] == Trapezoid.yAngle &&
         yAngle.value == startAngleValue) {
-      activeParamMap[3] = Scalenequadrilateral.empty;
+      activeParamMap[3] = Trapezoid.empty;
     }
   }
 
@@ -2249,32 +2248,32 @@ class ScalenequadrilateralController extends GetxController {
     Rcircum.value = xR.value = yR.value = startLengthValue;
     Rd = xRd = yRd = 0.0;
 
-    if (!isAvailableOneParam(Scalenequadrilateral.aSide)) {
+    if (!isAvailableOneParam(Trapezoid.aSide)) {
       aSide.value = startLengthValue;
       aSideD = 0;
     }
-    if (!isAvailableOneParam(Scalenequadrilateral.bSide)) {
+    if (!isAvailableOneParam(Trapezoid.bSide)) {
       bSide.value = startLengthValue;
       bSideD = 0;
     }
-    if (!isAvailableOneParam(Scalenequadrilateral.cSide)) {
+    if (!isAvailableOneParam(Trapezoid.cSide)) {
       cSide.value = startLengthValue;
       cSideD = 0;
     }
 
-    if (!isAvailableOneParam(Scalenequadrilateral.hHeight)) {
+    if (!isAvailableOneParam(Trapezoid.hHeight)) {
       hHeight.value = startLengthValue;
       hHeightD = 0;
     }
-    if (!isAvailableOneParam(Scalenequadrilateral.aAngle)) {
+    if (!isAvailableOneParam(Trapezoid.aAngle)) {
       aAngle.value = startAngleValue;
       aAngleD = 0;
     }
-    if (!isAvailableOneParam(Scalenequadrilateral.bAngle)) {
+    if (!isAvailableOneParam(Trapezoid.bAngle)) {
       bAngle.value = startAngleValue;
       bAngleD = 0;
     }
-    if (!isAvailableOneParam(Scalenequadrilateral.yAngle)) {
+    if (!isAvailableOneParam(Trapezoid.yAngle)) {
       yAngle.value = startAngleValue;
       yAngleD = 0;
     }

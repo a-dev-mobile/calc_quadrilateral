@@ -1,6 +1,6 @@
 import 'package:calc_quadrilateral/app/config/theme/app_color.dart';
 import 'package:calc_quadrilateral/app/constants/const_assets.dart';
-import 'package:calc_quadrilateral/app/features/calculate/controllers/scalene_c.dart';
+import 'package:calc_quadrilateral/app/features/calculate/controllers/trapezoid_c.dart';
 import 'package:calc_quadrilateral/app/shared_components/detail_info/area_perim.dart';
 import 'package:calc_quadrilateral/app/shared_components/image_info_w.dart';
 import 'package:calc_quadrilateral/app/shared_components/detail_info/detail_item.dart';
@@ -10,10 +10,10 @@ import 'package:calc_quadrilateral/app/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
-late var c = ScalenequadrilateralController.to;
+late var c = TrapezoidController.to;
 
-class ScaleneDetail extends StatelessWidget {
-  const ScaleneDetail({Key? key}) : super(key: key);
+class TrapezoidDetail extends StatelessWidget {
+  const TrapezoidDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,12 @@ class ScaleneDetail extends StatelessWidget {
                 child: Column(
                   children: [
                     const ImageInfoWidget(
-                        patchAsset:
-                            ConstAssetsImageRaster.scalenequadrilateralInfo),
+                        patchAsset: ConstAssetsImageRaster.trapezoidInfo),
                     TextTitleDetail(text: TranslateHelper.sides_height_angles),
                   ],
                 ),
               ),
-              content: const ScaleneSidesAngles(),
+              content: const TrapezoidSidesAngles(),
             ),
             StickyHeader(
               header: Container(
@@ -41,8 +40,7 @@ class ScaleneDetail extends StatelessWidget {
                 child: Column(
                   children: [
                     const ImageInfoWidget(
-                        patchAsset:
-                            ConstAssetsImageRaster.scalenequadrilateralAP),
+                        patchAsset: ConstAssetsImageRaster.trapezoidAP),
                     TextTitleDetail(text: TranslateHelper.area_perim),
                   ],
                 ),
@@ -58,8 +56,7 @@ class ScaleneDetail extends StatelessWidget {
                   child: Column(
                     children: [
                       const ImageInfoWidget(
-                          patchAsset:
-                              ConstAssetsImageRaster.scalenequadrilateralS),
+                          patchAsset: ConstAssetsImageRaster.trapezoidS),
                       TextTitleDetail(
                           text: TranslateHelper.mediana_geom_centroid),
                     ],
@@ -72,8 +69,7 @@ class ScaleneDetail extends StatelessWidget {
                   child: Column(
                     children: [
                       const ImageInfoWidget(
-                          patchAsset:
-                              ConstAssetsImageRaster.scalenequadrilateralSr),
+                          patchAsset: ConstAssetsImageRaster.trapezoidSr),
                       TextTitleDetail(
                           text: TranslateHelper.bisection_inscribed_circle),
                     ],
@@ -86,8 +82,7 @@ class ScaleneDetail extends StatelessWidget {
                   child: Column(
                     children: [
                       const ImageInfoWidget(
-                          patchAsset:
-                              ConstAssetsImageRaster.scalenequadrilateralSR),
+                          patchAsset: ConstAssetsImageRaster.trapezoidSR),
                       TextTitleDetail(
                           text: TranslateHelper.circumscribed_circle),
                     ],
@@ -229,8 +224,8 @@ class MedianaGeometricCentroid extends StatelessWidget {
   }
 }
 
-class ScaleneSidesAngles extends StatelessWidget {
-  const ScaleneSidesAngles({
+class TrapezoidSidesAngles extends StatelessWidget {
+  const TrapezoidSidesAngles({
     Key? key,
   }) : super(key: key);
 
@@ -241,43 +236,43 @@ class ScaleneSidesAngles extends StatelessWidget {
         // AppWidgets.dividerWelcome(),
 
         ItemDetail(
-          isActive: c.isAvailableOneParam(Scalenequadrilateral.aSide),
+          isActive: c.isAvailableOneParam(Trapezoid.aSide),
           leading: 'a',
           subtitle: 'a - ${TranslateHelper.base_quadrilateral}',
           title: c.aSide.value,
         ),
         ItemDetail(
-          isActive: c.isAvailableOneParam(Scalenequadrilateral.bSide),
+          isActive: c.isAvailableOneParam(Trapezoid.bSide),
           leading: 'b',
           subtitle: 'b - ${TranslateHelper.sides_quadrilateral}',
           title: c.bSide.value,
         ),
         ItemDetail(
-          isActive: c.isAvailableOneParam(Scalenequadrilateral.cSide),
+          isActive: c.isAvailableOneParam(Trapezoid.cSide),
           leading: 'c',
           subtitle: 'c - ${TranslateHelper.sides_quadrilateral}',
           title: c.cSide.value,
         ),
         ItemDetail(
-          isActive: c.isAvailableOneParam(Scalenequadrilateral.hHeight),
+          isActive: c.isAvailableOneParam(Trapezoid.hHeight),
           leading: 'h',
           subtitle: TranslateHelper.h_height_quadrilateral,
           title: c.hHeight.value,
         ),
         ItemDetail(
-          isActive: c.isAvailableOneParam(Scalenequadrilateral.aAngle),
+          isActive: c.isAvailableOneParam(Trapezoid.aAngle),
           leading: 'α',
           subtitle: 'α - ${TranslateHelper.internal_angle_degrees}',
           title: c.aAngle.value,
         ),
         ItemDetail(
-          isActive: c.isAvailableOneParam(Scalenequadrilateral.bAngle),
+          isActive: c.isAvailableOneParam(Trapezoid.bAngle),
           leading: 'β',
           subtitle: 'β - ${TranslateHelper.internal_angle_degrees}',
           title: c.bAngle.value,
         ),
         ItemDetail(
-          isActive: c.isAvailableOneParam(Scalenequadrilateral.yAngle),
+          isActive: c.isAvailableOneParam(Trapezoid.yAngle),
           leading: 'γ',
           subtitle: 'γ - ${TranslateHelper.internal_angle_degrees}',
           title: c.yAngle.value,

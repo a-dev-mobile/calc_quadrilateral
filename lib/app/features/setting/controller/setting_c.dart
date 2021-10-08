@@ -60,7 +60,7 @@ class SettingContrl extends GetxController {
 // todo обновление точности расчета нужно сделать
 //! not work
     // var c1 = RightquadrilateralController.to;
-    // var c2 = ScalenequadrilateralController.to;
+    // var c2 = TrapezoidController.to;
     // var c3 = EquilateralquadrilateralController.to;
     // var c4 = IsoscelesquadrilateralController.to;
 

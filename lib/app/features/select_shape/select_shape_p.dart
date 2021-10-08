@@ -17,7 +17,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 enum Shape {
   rightquadrilateral,
-  scalenequadrilateral,
+  trapezoid,
   isoscelesquadrilateral,
   equilateralquadrilateral,
   none,
@@ -59,7 +59,6 @@ class _SelectShapePageState extends State<SelectShapePage> {
 
   void _showInterstialAd() {
     if (_interstitialAd == null) {
-
       return;
     }
     _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
@@ -119,7 +118,7 @@ class _SelectShapePageState extends State<SelectShapePage> {
             Expanded(
               child: CardSelectShapet(
                 title: TranslateHelper.right_quadrilateral,
-                patchAssets1: ConstAssetsImageRaster.rightquadrilateralInfo,
+                patchAssets1: ConstAssetsImageRaster.trapezoidInfo,
                 enterParameter: TranslateHelper.enterTwoParameters,
                 info: TranslateHelper.right_info,
                 onTap: () {
@@ -131,21 +130,21 @@ class _SelectShapePageState extends State<SelectShapePage> {
             ),
             Expanded(
               child: CardSelectShapet(
-                title: TranslateHelper.scalene_quadrilateral,
-                patchAssets1: ConstAssetsImageRaster.scalenequadrilateralInfo,
+                title: TranslateHelper.trapezoid_quadrilateral,
+                patchAssets1: ConstAssetsImageRaster.trapezoidInfo,
                 enterParameter: TranslateHelper.enterThreeParameters,
-                info: TranslateHelper.scalene_info,
+                info: TranslateHelper.trapezoid_info,
                 onTap: () {
                   showAd();
-                  GlobalServ.to.aciveShape = Shape.scalenequadrilateral;
-                  Get.toNamed(Routes.calculateScalene);
+                  GlobalServ.to.aciveShape = Shape.trapezoid;
+                  Get.toNamed(Routes.calculateTrapezoid);
                 },
               ),
             ),
             Expanded(
               child: CardSelectShapet(
                 title: TranslateHelper.isosceles_quadrilateral,
-                patchAssets1: ConstAssetsImageRaster.isoscelesquadrilateralInfo,
+         patchAssets1: ConstAssetsImageRaster.trapezoidInfo,
                 enterParameter: TranslateHelper.enterTwoParameters,
                 info: TranslateHelper.isosceles_info,
                 onTap: () {
@@ -159,7 +158,7 @@ class _SelectShapePageState extends State<SelectShapePage> {
               child: CardSelectShapet(
                 title: TranslateHelper.equilateral_quadrilateral,
                 patchAssets1:
-                    ConstAssetsImageRaster.equilateralquadrilateralInfo,
+                   ConstAssetsImageRaster.trapezoidInfo,
                 enterParameter: TranslateHelper.enterOneParameters,
                 info: TranslateHelper.equilateral_info,
                 onTap: () {

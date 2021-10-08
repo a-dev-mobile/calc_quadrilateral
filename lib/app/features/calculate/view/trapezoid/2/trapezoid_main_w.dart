@@ -5,7 +5,7 @@ import 'package:calc_quadrilateral/app/config/theme/light_dark_theme.dart';
 
 import 'package:calc_quadrilateral/app/constants/const_color.dart';
 
-import 'package:calc_quadrilateral/app/features/calculate/controllers/scalene_c.dart';
+import 'package:calc_quadrilateral/app/features/calculate/controllers/trapezoid_c.dart';
 
 import 'package:calc_quadrilateral/app/translations/translate_helper.dart';
 
@@ -18,19 +18,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'scalene_detail_w.dart';
-import 'scalene_image_input_w.dart';
+import 'trapezoid_detail_w.dart';
+import 'trapezoid_image_input_w.dart';
 
-import 'scalene_numpad_w.dart';
+import 'trapezoid_numpad_w.dart';
 
-late ScalenequadrilateralController c;
+late TrapezoidController c;
 
-class ScaleneMain extends StatelessWidget {
-  const ScaleneMain({Key? key}) : super(key: key);
+class TrapezoidMain extends StatelessWidget {
+  const TrapezoidMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    c = ScalenequadrilateralController.to;
+    c = TrapezoidController.to;
 
     settingBar();
     return Scaffold(
@@ -39,14 +39,13 @@ class ScaleneMain extends StatelessWidget {
           children: [
             Obx(() {
               return c.isActiveImageInfo.value
-                  ? const ScaleneDetail()
+                  ? const TrapezoidDetail()
                   : Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InteractiveViewer(
-                            child:
-                                const ScalenequadrilateralImageInputWidget()),
+                            child: const TrapezoidImageInputWidget()),
                         //показываем если не инфо
                         Obx(() {
                           return Visibility(
@@ -59,7 +58,7 @@ class ScaleneMain extends StatelessWidget {
                               child: const MessageWidget());
                         }),
 
-                        const Expanded(child: NumPadScaleneWidget()),
+                        const Expanded(child: NumPadTrapezoidWidget()),
                       ],
                     );
             }),

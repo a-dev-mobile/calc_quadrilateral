@@ -1,18 +1,18 @@
 import 'package:calc_quadrilateral/app/admob/ad_helper.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/2/scalene_main_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/2/trapezoid_main_w.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class CalculateScalenePage extends StatefulWidget {
-  const CalculateScalenePage({Key? key}) : super(key: key);
+class CalculateTrapezoidPage extends StatefulWidget {
+  const CalculateTrapezoidPage({Key? key}) : super(key: key);
 
   @override
-  _CalculateScalenePageState createState() => _CalculateScalenePageState();
+  _CalculateTrapezoidPageState createState() => _CalculateTrapezoidPageState();
 }
 
-class _CalculateScalenePageState extends State<CalculateScalenePage> {
+class _CalculateTrapezoidPageState extends State<CalculateTrapezoidPage> {
   late BannerAd _bottomBannerAd;
   bool _isBottomBannerAdLoaded = false;
 
@@ -58,7 +58,7 @@ class _CalculateScalenePageState extends State<CalculateScalenePage> {
             )
           : null,
       // body: SafeArea(child: RightquadrilateralInputWidget()),
-      body: const SafeArea(child: ScaleneMain()),
+      body: const SafeArea(child: TrapezoidMain()),
     );
   }
 }

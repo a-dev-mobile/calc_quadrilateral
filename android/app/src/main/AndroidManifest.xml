@@ -2,7 +2,7 @@
     package="a.dev.calc_quadrilateral.calc_quadrilateral">
    <application
         android:label="calc_quadrilateral"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

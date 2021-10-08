@@ -3,20 +3,20 @@ import 'dart:math';
 import 'package:calc_quadrilateral/app/config/theme/app_color.dart';
 import 'package:calc_quadrilateral/app/constants/const_assets.dart';
 import 'package:calc_quadrilateral/app/constants/const_number.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/3/a_angle_w.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/3/a_side_w.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/3/b_angle_w.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/3/b_side_w.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/3/c_side_w.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/3/h_height_w.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/scalene/3/y_angle_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/a_angle_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/a_side_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/b_angle_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/b_side_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/c_side_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/h_height_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/y_angle_w.dart';
 
 import 'package:flutter/material.dart';
 
-String pathAssestInput = ConstAssetsImageRaster.scalenequadrilateralInput;
+String pathAssestInput = ConstAssetsImageRaster.trapezoidInput;
 
-class ScalenequadrilateralImageInputWidget extends StatelessWidget {
-  const ScalenequadrilateralImageInputWidget({
+class TrapezoidImageInputWidget extends StatelessWidget {
+  const TrapezoidImageInputWidget({
     Key? key,
   }) : super(key: key);
 

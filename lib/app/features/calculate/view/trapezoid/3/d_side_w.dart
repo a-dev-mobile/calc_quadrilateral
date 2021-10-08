@@ -12,8 +12,8 @@ import 'package:get/get.dart';
 
 late var c = TrapezoidController.to;
 
-class YangleWidget extends StatelessWidget {
-  const YangleWidget(
+class DsideWidget extends StatelessWidget {
+  const DsideWidget(
       {Key? key,
       required this.posX,
       required this.posY,
@@ -30,11 +30,11 @@ class YangleWidget extends StatelessWidget {
   void onTap() {
     c.isaSide.value = false;
     c.isbSide.value = false;
-    c.iscSide.value = false;
+    c.iscSide.value = true;
     c.ishHeight.value = false;
     c.isaAngle.value = false;
     c.isbAngle.value = false;
-    c.isyAngle.value = true;
+    c.isyAngle.value = false;
     c.showMessage();
   }
 
@@ -54,9 +54,9 @@ class YangleWidget extends StatelessWidget {
             angle: angle * pi / 180,
             child: Obx(() {
               // ====change====
-              activeValue = c.yAngle.value;
-              isActiveInput = c.isyAngle.value;
-              elementFigure = Trapezoid.yAngle;
+              activeValue = c.cSide.value;
+              isActiveInput = c.iscSide.value;
+              elementFigure = Trapezoid.cSide;
               //===============
               isActiveParam =
                   c.activeParamMap.value.containsValue(elementFigure);

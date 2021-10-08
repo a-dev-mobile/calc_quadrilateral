@@ -8,8 +8,8 @@ import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/a_sid
 import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/b_angle_w.dart';
 import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/b_side_w.dart';
 import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/c_side_w.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/d_side_w.dart';
 import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/h_height_w.dart';
-import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/3/y_angle_w.dart';
 
 import 'package:flutter/material.dart';
 
@@ -43,47 +43,46 @@ class TrapezoidImageInputWidget extends StatelessWidget {
 
             AsideWidget(
               angle: 0,
-              posX: -4.711,
-              posY: 43.377,
-              minSizeImage: minSize,
-            ),
-            CsideWidget(
-              angle: -71.323,
-              posX: -35.572,
-              posY: -1.783,
+              posX: 0,
+              posY: 45.7143,
               minSizeImage: minSize,
             ),
             BsideWidget(
-              angle: 56.523,
-              posX: 13.244,
-              posY: -3.719,
+              angle: 75.964,
+              posX: 36.626,
+              posY: -1.563,
               minSizeImage: minSize,
             ),
-
+            CsideWidget(
+              angle: 0,
+              posX: -0.495,
+              posY: -45.525,
+              minSizeImage: minSize,
+            ),
+            DsideWidget(
+              angle: -75.964,
+              posX: -36.626,
+              posY: -1.563,
+              minSizeImage: minSize,
+            ),
             HheightWidget(
               angle: -90,
-              posX: -16.503,
-              posY: 7.051,
+              posX: 0,
+              posY: 0,
               minSizeImage: minSize,
             ),
             AangleWidget(
-              angle: 54.341,
-              posX: -22.37,
-              posY: 22.748,
+              angle: -42 + 90,
+              posX: -22.266,
+              posY: 26.2,
               minSizeImage: minSize,
             ),
             BangleWidget(
-              angle: -61.705,
-              posX: 8.008,
-              posY: 23.864,
+              angle: -52.032,
+              posX: 22.266,
+              posY: 26.2,
               minSizeImage: minSize,
             ),
-            YangleWidget(
-              angle: -7.381,
-              posX: -13.56,
-              posY: -13.39,
-              minSizeImage: minSize,
-            )
           ],
         );
       }),

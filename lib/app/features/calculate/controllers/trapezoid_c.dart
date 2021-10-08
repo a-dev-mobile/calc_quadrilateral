@@ -20,6 +20,7 @@ enum Trapezoid {
   aSide,
   bSide,
   cSide,
+  dSide,
   hHeight,
   aAngle,
   bAngle,
@@ -39,6 +40,7 @@ class TrapezoidController extends GetxController {
   var aSide = startLengthValue.obs;
   var bSide = startLengthValue.obs;
   var cSide = startLengthValue.obs;
+  var dSide = startLengthValue.obs;
   var hHeight = startLengthValue.obs;
   var aAngle = startAngleValue.obs;
   var bAngle = startAngleValue.obs;
@@ -47,6 +49,7 @@ class TrapezoidController extends GetxController {
   double aSideD = 0.0;
   double bSideD = 0.0;
   double cSideD = 0.0;
+  double dSideD = 0.0;
   double hHeightD = 0.0;
   double aAngleD = 0.0;
   double bAngleD = 0.0;

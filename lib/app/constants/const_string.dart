@@ -10,6 +10,8 @@ abstract class ConstString {
 
   static const String localeRu = 'ru';
   static const String localeEn = 'en';
+  static const String angleAlpha = 'α';
+  static const String angleBetta = 'β‎';
 
   static const String degConvert = "☺°.☺☺";
   static const String degMinSecConvert = "☺°☺′☺″";

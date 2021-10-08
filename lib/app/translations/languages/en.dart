@@ -1,6 +1,6 @@
 Map<String, String> en = {
   'about': 'About App',
-  'app_name': 'quadrilateral',
+  'app_name': 'Quadrilateral',
   'app_name_sub': 'Calculations',
   'right_quadrilateral': 'Right',
   'trapezoid_quadrilateral': 'Trapezoid',

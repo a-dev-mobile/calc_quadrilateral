@@ -46,6 +46,7 @@ Map<String, String> en = {
 ---
 Always check your result!
 ''',
+  'enter_4_parameters': 'Enter known 4 values',
   'enter_3_parameters': 'Enter known 3 values',
   'enter_2_parameters': 'Enter known 2 values',
   'enter_1_parameters': 'Enter known 1 values',

@@ -31,10 +31,11 @@ class CsideWidget extends StatelessWidget {
     c.isaSide.value = false;
     c.isbSide.value = false;
     c.iscSide.value = true;
+    c.isdSide.value = false;
     c.ishHeight.value = false;
     c.isaAngle.value = false;
     c.isbAngle.value = false;
-    c.isyAngle.value = false;
+
     c.showMessage();
   }
 

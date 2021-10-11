@@ -29,10 +29,11 @@ class HheightWidget extends StatelessWidget {
     c.isaSide.value = false;
     c.isbSide.value = false;
     c.iscSide.value = false;
+    c.isdSide.value = false;
     c.ishHeight.value = true;
     c.isaAngle.value = false;
     c.isbAngle.value = false;
-    c.isyAngle.value = false;
+
     c.showMessage();
   }
 

@@ -20,6 +20,7 @@ class TranslateHelper {
   static String get isosceles_info => 'isosceles_info'.tr;
   static String get equilateral_info => 'equilateral_info'.tr;
 
+  static String get enterFourParameters => 'enter_4_parameters'.tr;
   static String get enterThreeParameters => 'enter_3_parameters'.tr;
   static String get enterTwoParameters => 'enter_2_parameters'.tr;
   static String get enterOneParameters => 'enter_1_parameters'.tr;

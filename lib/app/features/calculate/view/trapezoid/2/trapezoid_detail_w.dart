@@ -63,32 +63,8 @@ class TrapezoidDetail extends StatelessWidget {
                   ),
                 ),
                 content: const MedianaGeometricCentroid()),
-            StickyHeader(
-                header: Container(
-                  color: AppColors.content(context),
-                  child: Column(
-                    children: [
-                      const ImageInfoWidget(
-                          patchAsset: ConstAssetsImageRaster.trapezoidSr),
-                      TextTitleDetail(
-                          text: TranslateHelper.bisection_inscribed_circle),
-                    ],
-                  ),
-                ),
-                content: const BisectionInscribedCircle()),
-            StickyHeader(
-                header: Container(
-                  color: AppColors.content(context),
-                  child: Column(
-                    children: [
-                      const ImageInfoWidget(
-                          patchAsset: ConstAssetsImageRaster.trapezoidSR),
-                      TextTitleDetail(
-                          text: TranslateHelper.circumscribed_circle),
-                    ],
-                  ),
-                ),
-                content: const CircumscribedCircle()),
+
+          
           ],
         );
       },
@@ -96,89 +72,6 @@ class TrapezoidDetail extends StatelessWidget {
   }
 }
 
-class CircumscribedCircle extends StatelessWidget {
-  const CircumscribedCircle({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ItemDetail(
-          isActive: false,
-          leading: 'R',
-          subtitle: TranslateHelper.radius_diameter_circumscribed_circle,
-          title:
-              'r ${c.Rcircum.value} / ⌀ ${AppUtilsNumber.getFormatNumber(c.Rd * 2, c.precisionResult)}',
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'X',
-          subtitle: TranslateHelper.x_cord_SR,
-          title: c.xR.value,
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'Y',
-          subtitle: TranslateHelper.y_cord_SR,
-          title: c.yR.value,
-        ),
-      ],
-    );
-  }
-}
-
-class BisectionInscribedCircle extends StatelessWidget {
-  const BisectionInscribedCircle({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ItemDetail(
-          isActive: false,
-          leading: 'la',
-          subtitle: '${TranslateHelper.bis_of_side} a',
-          title: c.lA.value,
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'lb',
-          subtitle: '${TranslateHelper.bis_of_side} b',
-          title: c.lB.value,
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'lc',
-          subtitle: '${TranslateHelper.bis_of_side} c',
-          title: c.lC.value,
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'r',
-          subtitle: TranslateHelper.radius_diameter_inscribed_circle,
-          title:
-              'r ${c.rInscribed.value} / ⌀ ${AppUtilsNumber.getFormatNumber(c.rd * 2, c.precisionResult)}',
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'X',
-          subtitle: TranslateHelper.x_cord_Sr,
-          title: c.xr.value,
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'Y',
-          subtitle: TranslateHelper.y_cord_Sr,
-          title: c.yr.value,
-        ),
-      ],
-    );
-  }
-}
 
 class MedianaGeometricCentroid extends StatelessWidget {
   const MedianaGeometricCentroid({
@@ -189,24 +82,7 @@ class MedianaGeometricCentroid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ItemDetail(
-          isActive: false,
-          leading: 'ma',
-          subtitle: '${TranslateHelper.med_of_side} a',
-          title: c.mA.value,
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'mb',
-          subtitle: '${TranslateHelper.med_of_side} b',
-          title: c.mB.value,
-        ),
-        ItemDetail(
-          isActive: false,
-          leading: 'mc',
-          subtitle: '${TranslateHelper.med_of_side} c',
-          title: c.mC.value,
-        ),
+    
         ItemDetail(
           isActive: false,
           leading: 'X',
@@ -253,6 +129,12 @@ class TrapezoidSidesAngles extends StatelessWidget {
           subtitle: 'c - ${TranslateHelper.sides_quadrilateral}',
           title: c.cSide.value,
         ),
+         ItemDetail(
+          isActive: c.isAvailableOneParam(Trapezoid.cSide),
+          leading: 'd',
+          subtitle: 'd - ${TranslateHelper.sides_quadrilateral}',
+          title: c.cSide.value,
+        ),
         ItemDetail(
           isActive: c.isAvailableOneParam(Trapezoid.hHeight),
           leading: 'h',
@@ -271,12 +153,7 @@ class TrapezoidSidesAngles extends StatelessWidget {
           subtitle: 'β - ${TranslateHelper.internal_angle_degrees}',
           title: c.bAngle.value,
         ),
-        ItemDetail(
-          isActive: c.isAvailableOneParam(Trapezoid.yAngle),
-          leading: 'γ',
-          subtitle: 'γ - ${TranslateHelper.internal_angle_degrees}',
-          title: c.yAngle.value,
-        ),
+      
       ],
     );
   }

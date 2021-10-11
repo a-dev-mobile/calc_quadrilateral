@@ -31,10 +31,11 @@ class BangleWidget extends StatelessWidget {
     c.isaSide.value = false;
     c.isbSide.value = false;
     c.iscSide.value = false;
+    c.isdSide.value = false;
     c.ishHeight.value = false;
     c.isaAngle.value = false;
     c.isbAngle.value = true;
-    c.isyAngle.value = false;
+  
     c.showMessage();
   }
 

@@ -30,11 +30,12 @@ class DsideWidget extends StatelessWidget {
   void onTap() {
     c.isaSide.value = false;
     c.isbSide.value = false;
-    c.iscSide.value = true;
+    c.iscSide.value = false;
+    c.isdSide.value = true;
     c.ishHeight.value = false;
     c.isaAngle.value = false;
     c.isbAngle.value = false;
-    c.isyAngle.value = false;
+
     c.showMessage();
   }
 
@@ -54,9 +55,9 @@ class DsideWidget extends StatelessWidget {
             angle: angle * pi / 180,
             child: Obx(() {
               // ====change====
-              activeValue = c.cSide.value;
-              isActiveInput = c.iscSide.value;
-              elementFigure = Trapezoid.cSide;
+              activeValue = c.dSide.value;
+              isActiveInput = c.isdSide.value;
+              elementFigure = Trapezoid.dSide;
               //===============
               isActiveParam =
                   c.activeParamMap.value.containsValue(elementFigure);

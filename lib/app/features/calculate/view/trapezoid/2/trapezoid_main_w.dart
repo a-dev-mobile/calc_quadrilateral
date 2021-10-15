@@ -6,6 +6,7 @@ import 'package:calc_quadrilateral/app/config/theme/light_dark_theme.dart';
 import 'package:calc_quadrilateral/app/constants/const_color.dart';
 
 import 'package:calc_quadrilateral/app/features/calculate/controllers/trapezoid_c.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/2/draw_shape.dart';
 
 import 'package:calc_quadrilateral/app/translations/translate_helper.dart';
 
@@ -68,7 +69,13 @@ class TrapezoidMain extends StatelessWidget {
               return c.isActiveImageInfo.value
                   ? const IconInputInfoWidget(icon: Icons.description_outlined)
                   : const IconInputInfoWidget(icon: Icons.calculate_outlined);
-            })
+            }),
+
+            Positioned(
+              top: 5.h,
+              left: 20.w,
+              child: SizedBox(width: 30.w, height: 30.w, child: DrawShape()),
+            ),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:calc_quadrilateral/app/config/theme/app_color.dart';
 import 'package:calc_quadrilateral/app/constants/const_assets.dart';
 import 'package:calc_quadrilateral/app/features/calculate/controllers/trapezoid_c.dart';
+import 'package:calc_quadrilateral/app/features/calculate/view/trapezoid/2/draw_shape.dart';
 import 'package:calc_quadrilateral/app/shared_components/detail_info/area_perim.dart';
 import 'package:calc_quadrilateral/app/shared_components/image_info_w.dart';
 import 'package:calc_quadrilateral/app/shared_components/detail_info/detail_item.dart';
@@ -17,11 +18,12 @@ class TrapezoidDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
     return ListView.builder(
       itemBuilder: (context, index) {
         return Column(
           children: [
-            StickyHeader(
+               StickyHeader(
               header: Container(
                 color: AppColors.content(context),
                 child: Column(
@@ -63,15 +65,12 @@ class TrapezoidDetail extends StatelessWidget {
                   ),
                 ),
                 content: const MedianaGeometricCentroid()),
-
-          
           ],
         );
       },
     );
   }
 }
-
 
 class MedianaGeometricCentroid extends StatelessWidget {
   const MedianaGeometricCentroid({
@@ -82,7 +81,6 @@ class MedianaGeometricCentroid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-    
         ItemDetail(
           isActive: false,
           leading: 'X',
@@ -129,7 +127,7 @@ class TrapezoidSidesAngles extends StatelessWidget {
           subtitle: 'c - ${TranslateHelper.sides_quadrilateral}',
           title: c.cSide.value,
         ),
-         ItemDetail(
+        ItemDetail(
           isActive: c.isAvailableOneParam(Trapezoid.cSide),
           leading: 'd',
           subtitle: 'd - ${TranslateHelper.sides_quadrilateral}',
@@ -153,7 +151,6 @@ class TrapezoidSidesAngles extends StatelessWidget {
           subtitle: 'β - ${TranslateHelper.internal_angle_degrees}',
           title: c.bAngle.value,
         ),
-      
       ],
     );
   }

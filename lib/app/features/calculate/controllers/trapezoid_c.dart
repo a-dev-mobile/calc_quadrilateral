@@ -412,9 +412,14 @@ class TrapezoidController extends GetxController {
     bAngle.value = AppUtilsNumber.getFormatNumber(bAngleD, precisionResult);
   }
 
-  calcAangleKnowHheiBside() {
+  calcAangleKnowHheiDside() {
     aAngleD = AppConvert.toDegree(asin(hHeightD / dSideD));
     aAngle.value = AppUtilsNumber.getFormatNumber(aAngleD, precisionResult);
+  }
+
+  calcBangleKnowHheiBside() {
+    bAngleD = AppConvert.toDegree(asin(hHeightD / bSideD));
+    bAngle.value = AppUtilsNumber.getFormatNumber(bAngleD, precisionResult);
   }
 
   calcDsideKnowAsideBsideCsideBAngle() {
@@ -426,7 +431,10 @@ class TrapezoidController extends GetxController {
         pow(cSideD, 2));
     dSide.value = AppUtilsNumber.getFormatNumber(dSideD, precisionResult);
   }
-
+ calcCsideKnowAsideBsideAangBang() {
+    cSideD = (aSideD*sin(AppConvert.toRadian(aAngleD))-bSideD*sin(AppConvert.toRadian(-aAngleD-bAngleD+180)))/(sin(AppConvert.toRadian(aAngleD)));
+    cSide.value = AppUtilsNumber.getFormatNumber(cSideD, precisionResult);
+  }
   calcBangleKnowASideBSideCsideAangle() {
     bAngleD = -aAngleD -
         AppConvert.toDegree((asin((aSideD * sin(AppConvert.toRadian(aAngleD)) -
@@ -467,7 +475,7 @@ class TrapezoidController extends GetxController {
     if (isAvailableFourParams(param1, param2, param3, param4)) {
       calcBAngleKnowHheiBside();
       calcDsideKnowAsideBsideCsideBAngle();
-      calcAangleKnowHheiBside();
+      calcAangleKnowHheiDside();
 
       calcAreaAndPerimKnowAsideBSideCSideDSidedeHhei();
     }
@@ -500,7 +508,33 @@ class TrapezoidController extends GetxController {
     }
 
 // aSide bSide cSide bAngle
+
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.cSide;
+    param4 = Trapezoid.bAngle;
+
+    if (isAvailableFourParams(param1, param2, param3, param4)) {
+      calcHheiKnowBsideBang();
+      calcAangleKnowHheiDside();
+      calcDsideKnowAsideBsideCsideBAngle();
+      calcAreaAndPerimKnowAsideBSideCSideDSidedeHhei();
+    }
+
 // aSide bSide hHeight dSide
+
+    param1 = Trapezoid.aSide;
+    param2 = Trapezoid.bSide;
+    param3 = Trapezoid.hHeight;
+    param4 = Trapezoid.dSide;
+
+    if (isAvailableFourParams(param1, param2, param3, param4)) {
+      calcAangleKnowHheiDside();
+      calcBAngleKnowHheiBside();
+      calcCsideKnowAsideBsideAangBang();
+      calcAreaAndPerimKnowAsideBSideCSideDSidedeHhei();
+    }
+
 // aSide bSide hHeight aAngle
 // aSide bSide hHeight bAngle
 // aSide bSide dSide aAngle
